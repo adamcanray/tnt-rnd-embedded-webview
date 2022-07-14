@@ -1,4 +1,3 @@
-// test cdn
 class PopupWebview {
   constructor() {
     this.renderSnapPopup = this.renderSnapPopup.bind(this);
