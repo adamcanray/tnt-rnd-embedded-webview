@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script type="text/javascript" src="./src/popup-webview.js"></script>
+
+    <title>My 3rd-Party</title>
+</head>
+<body>
+
+    <button id="snap_button">Masukan PIN</button>
+
+    <script>
+        const showSnap = document.getElementById('snap_button')
+        showSnap.addEventListener('click', function(){
+            window.popupwebview.renderPopup('https://dev-api.tilaka.id/personal-webview/kyc/pinform?registration_id=a2c868c8-6439-4a3c-831f-ec6e0f72bfff&user_identifier=adamkabel100', {
+                onClose: function() {
+                    alert('callback on close!')
+                }
+            })
+        })
+    </script>
+
+</body>
+</html>
