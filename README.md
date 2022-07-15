@@ -34,3 +34,36 @@ Berdasarkan pada [dokumentasi ini](https://docs.midtrans.com/en/snap/integration
 
 - Bagaimana jika kita sediakan attribute `data-iframe-src` untuk merender halaman apapun yang di-set oleh 3rd-party, contoh: `<script type="text/javascript" src="https://cdn.saya/tnt-snap-popup.js" data-iframe-src="https://google.com"></script>`. lalu module `tnt-snap-popup.js` akan menjadikan `data-iframe-src` sebagai `src` iframe: `<iframe src="<data-iframe-src>"></iframe>`.
 - Membuat property baru di window object javascript, agar bisa digunakan untuk trigger: `window.popupwebview.renderPopup`. method `renderPopup` nerima parameter `pageUrl` yang nantinya dijadikan `src` pada `<iframe>`, jadi nanti yang di show di popupnya itu adalah iframe dengan source halaman tertentu.
+
+## Jalan yang dilalui
+
+Setelah beberapa uji coba dan pertimbangan, akhirnya diputuskan untuk menempuh [Jalan 3](https://github.com/adamcanray/tnt-rnd-embedded-webview#jalan-3) dengan beberapa tambahan yang kedepannya akan terus dikembangkan.
+
+## Memulai
+
+Anda hanya perlu menambahkan tag script pada halaman anda.
+
+```
+<script
+type="text/javascript"
+src="https://cdn.jsdelivr.net/gh/adamcanray/tnt-rnd-embedded-webview@<latest-commit>/src/popup-webview.js"></script>
+```
+
+> pada script diatas `<latest-commit>` harus diisi dengan commit terakhir yang ada pada branch **main** di [repository ini](https://github.com/adamcanray/tnt-rnd-embedded-webview).
+
+Setelah itu baru bisa menggunakan fungsi-fungsi yang disediakan oleh plugin, contoh:
+
+```
+window.popupwebview.renderPopup(
+    "https://link-to-webview.com",
+    {
+    onClose: function () {
+        alert("callback on close!");
+    },
+    iframeStyle:
+        "border: 0px; height: 360px; background-color: #ffffff;",
+    }
+);
+```
+
+> Untuk memastikan bahwa modal popup ditampilkan dengan benar di perangkat seluler, harap sertakan tag meta viewport di dalam tag <head> Anda. Implementasi yang paling umum: `<meta name="viewport" content="width=device-width, initial-scale=1">`.

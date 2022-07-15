@@ -60,7 +60,7 @@ class PopupWebview {
   }
 
   /**
-   *Create popup iframe element
+   * Create popup iframe element
    * @type {Tprivate_createPopupIframeElement}
    */
   #createPopupIframeElement(
