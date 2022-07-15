@@ -21,7 +21,7 @@
  * @class
  * @method #createPopupElement
  * @method #createPopupIframeElement
- * @method #calbackOnClose
+ * @method #callbackOnClose
  * @method renderPopupElement
  */
 class PopupWebview {
@@ -53,7 +53,7 @@ class PopupWebview {
       `;
     popupDiv.onclick = function () {
       popupDiv.remove();
-      that.#calbackOnClose(callbackOnClose);
+      that.#callbackOnClose(callbackOnClose);
     };
 
     return popupDiv;
@@ -80,7 +80,7 @@ class PopupWebview {
    * Callback method that fires when popup is closed (removed from DOM)
    * @type {Tprivate_callbackOnClose}
    */
-  #calbackOnClose(onClose) {
+  #callbackOnClose(onClose) {
     if (!onClose) return;
     onClose();
   }
